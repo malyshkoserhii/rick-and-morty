@@ -1,0 +1,19 @@
+.NavList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+}
+
+.NavLink {
+  font-size: 18px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.ActiveLink {
+  composes: NavLink;
+  color: rgb(252, 4, 54);
+  font-weight: 700;
+  border-bottom: 1px solid rgb(252, 4, 54);
+}
