@@ -1,0 +1,20 @@
+.CharcterDetailsSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1, 1fr;
+  width: 800px;
+  padding: 50px;
+}
+
+.Info {
+  font-size: 18px;
+}
+
+.Name {
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.Type {
+  font-weight: 700;
+}
