@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../Modal';
+import Modal from '../../Modal';
 import CharacterDetails from '../CharacterDetails';
 import s from './CharactersListItem.module.css';
 
