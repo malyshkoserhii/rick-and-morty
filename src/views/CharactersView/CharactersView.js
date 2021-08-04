@@ -1,6 +1,6 @@
 import { useState, createContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import FilterForm from '../../components/Characters/CharacterFilterForm';
+import CharacterFilterForm from '../../components/Characters/CharacterFilterForm';
 import CharacterContent from '../../components/Characters/CharactersContent';
 import PaginationButtons from '../../components/PaginationButtons';
 
@@ -60,7 +60,7 @@ export default function CharactersView() {
     <PageContext.Provider value={page}>
       <FormContext.Provider value={formValues}>
         <section>
-          <FilterForm
+          <CharacterFilterForm
             onChangeSpecies={onChangeSpecies}
             onChangeStatus={onChangeStatus}
             onChangeGender={onChangeGender}

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PageContext } from '../../views/CharactersView/CharactersView';
+import { PageContext } from '../../views/EpisodesView/EpisodesView';
 import Button from './../Button/Button';
 import s from './PaginationButtons.module.css';
 
@@ -29,6 +29,11 @@ const PaginationButtons = ({ onPreviousPage, onNextPage }) => {
       </div>
     </section>
   );
+};
+
+PaginationButtons.defaultProps = {
+  onPreviousPage: () => {},
+  onNextPage: () => {},
 };
 
 export default PaginationButtons;

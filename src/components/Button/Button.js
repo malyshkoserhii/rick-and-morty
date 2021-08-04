@@ -8,6 +8,8 @@ const Button = ({ type, className, onClick, text }) => {
 
 Button.defaultProps = {
   type: 'button',
+  className: '',
+  onClick: () => {},
   text: 'click',
 };
 

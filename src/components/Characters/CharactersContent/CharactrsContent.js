@@ -1,21 +1,19 @@
 import { useState, useEffect, useContext } from 'react';
 import { PageContext } from '../../../views/CharactersView/CharactersView';
 import { FormContext } from '../../../views/CharactersView/CharactersView';
-import * as apiCharacters from '../../../services/rick-morty-character-api';
+import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import CharacterList from '../CharactersList';
 
 export default function CharactersContent({ onChangePage }) {
   const [characters, setCharacters] = useState([]);
   const page = useContext(PageContext);
   const formValues = useContext(FormContext);
-  const species = formValues.species;
-  const status = formValues.status;
-  const gender = formValues.gender;
+  const { species, status, gender } = formValues;
 
   useEffect(() => {
-    const initialCaharactersViewRender = async () => {
+    const charactersRender = async () => {
       try {
-        const response = await apiCharacters.fetchAllCaharacters(
+        const response = await apiRickAndMorty.fetchCharacters(
           page,
           species,
           status,
@@ -28,7 +26,7 @@ export default function CharactersContent({ onChangePage }) {
         return [];
       }
     };
-    initialCaharactersViewRender();
+    charactersRender();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, species, status, gender]);
 
@@ -36,3 +34,7 @@ export default function CharactersContent({ onChangePage }) {
     <section>{characters && <CharacterList characters={characters} />}</section>
   );
 }
+
+CharactersContent.defaultProps = {
+  onChangePage: () => {},
+};
