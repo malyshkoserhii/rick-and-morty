@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import CharactersListItem from '../CharactersListItem';
-
 import s from './CharactersList.module.css';
 
 const CharacterList = ({ characters }) => {

@@ -1,0 +1,46 @@
+.EpisodesListItem {
+  display: grid;
+  grid-template-columns: 380px 240px 120px 180px 180px;
+  grid-template-rows: 1, 1fr;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.EpisodesListItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.EpisodesListItem:hover {
+  border: 1px solid rgb(0, 0, 0);
+  transform: scale(1.02);
+}
+
+.Info {
+  display: grid;
+  grid-template-columns: 1, 1fr;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.Type {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.Content {
+  font-size: 20px;
+}
+
+.Button {
+  justify-self: end;
+  width: 160px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(138, 43, 226);
+}
