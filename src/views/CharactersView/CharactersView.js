@@ -12,14 +12,8 @@ export default function CharactersView() {
     Number(new URLSearchParams(location.search).get('page')) || 1;
   const [page, setPage] = useState(initialPage);
 
-  console.log('CharactersView', page);
-
   const onPreviousPage = () => {
     setPage(page => page - 1);
-    history.push({
-      ...location,
-      search: `page=${page}`,
-    });
   };
 
   const onNextPage = () => {

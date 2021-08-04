@@ -5,7 +5,6 @@ import s from './PaginationButtons.module.css';
 
 const PaginationButtons = ({ onPreviousPage, onNextPage }) => {
   const page = useContext(PageContext);
-  console.log('PaginationButtons', page);
 
   return (
     <section className={s.pagination}>
