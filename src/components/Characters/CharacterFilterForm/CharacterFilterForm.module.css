@@ -1,0 +1,21 @@
+.Container {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.FilterForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+select {
+  font-size: 20px;
+  cursor: pointer;
+}

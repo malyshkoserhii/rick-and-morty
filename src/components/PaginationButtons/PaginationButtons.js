@@ -10,12 +10,14 @@ const PaginationButtons = ({ onPreviousPage, onNextPage }) => {
     <section className={s.pagination}>
       <div className={s.wrapper}>
         <div className={s.prevBtnWrapper}>
-          <Button
-            type="submit"
-            className={s.button}
-            onClick={() => onPreviousPage(page)}
-            text="Prev"
-          />
+          {page > 1 && (
+            <Button
+              type="submit"
+              className={s.button}
+              onClick={() => onPreviousPage(page)}
+              text="Prev"
+            />
+          )}
         </div>
         <span className={s.counter}>{page}</span>
         <Button

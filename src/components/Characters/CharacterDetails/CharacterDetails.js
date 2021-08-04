@@ -13,7 +13,7 @@ const CharacterDetails = ({ character }) => {
           <span className={s.Type}>Gender: </span>
           {character.gender}
         </p>
-        <p className>
+        <p className={s.Location}>
           <span className={s.Type}>Location: </span>
           {character.location.name}
         </p>
@@ -26,7 +26,7 @@ const CharacterDetails = ({ character }) => {
           {character.status}
         </p>
         <p className={s.Status}>
-          <span className={s.Type}>Total Epsiodes: </span>
+          <span className={s.Type}>Total Episodes: </span>
           {character.episode.length}
         </p>
       </div>
