@@ -32,5 +32,5 @@ export async function fetchEpisodes(page, query) {
 
   return response.ok
     ? await response.json()
-    : Promise.reject(new Error('Not Found From Promise Reject'));
+    : Promise.reject(new Error(`Episode ${query} not found`));
 }

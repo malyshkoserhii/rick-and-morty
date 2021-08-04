@@ -42,7 +42,6 @@ export default function CharacterFilterForm({
           <option value="all">all</option>
           <option value="human">human</option>
           <option value="alien">alien</option>
-          <option value="disease">disease</option>
           <option value="unknown">unknown</option>
         </select>
 

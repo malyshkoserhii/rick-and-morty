@@ -4,7 +4,7 @@ import { FormContext } from '../../../views/EpisodesView/EpisodesView';
 import s from './EpisodesSearchFrom.module.css';
 
 export default function EpisodesSearchForm({ onChangeQuery }) {
-  const query = useContext(FormContext);
+  let query = useContext(FormContext);
 
   const onFormSubmit = event => {
     event.preventDefault();
@@ -12,13 +12,17 @@ export default function EpisodesSearchForm({ onChangeQuery }) {
   };
 
   const onInputChange = event => {
-    const input = event.currentTarget.value.toLowerCase();
+    let input = event.currentTarget.value.toLowerCase();
 
-    if (input === '') {
-      return;
+    if (input.trim() === '') {
+      input = 'all';
     }
 
-    onChangeQuery(input);
+    query = input;
+  };
+
+  const onReturnAllEpisodes = () => {
+    onChangeQuery('all');
   };
 
   return (
@@ -33,8 +37,14 @@ export default function EpisodesSearchForm({ onChangeQuery }) {
             onChange={onInputChange}
           />
         </label>
-        <Button type="submit" text="Search" />
+        <Button type="submit" text="Search" className={s.Button} />
       </form>
+      <Button
+        type="button"
+        text="Return All Episodes"
+        className={s.Button}
+        onClick={onReturnAllEpisodes}
+      />
     </div>
   );
 }

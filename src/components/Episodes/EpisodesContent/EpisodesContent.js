@@ -8,6 +8,8 @@ export default function EpisodesContent({ onChangePage }) {
   const [episodes, setEpisodes] = useState([]);
   const page = useContext(PageContext);
   const query = useContext(FormContext);
+  // const [error, setError] = useState('');
+  // console.log('EpisodesContent', error);
 
   useEffect(() => {
     const episodesRender = async () => {
@@ -16,6 +18,7 @@ export default function EpisodesContent({ onChangePage }) {
         setEpisodes(response.results);
         onChangePage(page);
       } catch (error) {
+        // setError(error.message);
         console.log(error);
         return [];
       }
@@ -26,7 +29,6 @@ export default function EpisodesContent({ onChangePage }) {
 
   return (
     <>
-      <div>EpisodesContent</div>
       <EpisodesList episodes={episodes} />
     </>
   );

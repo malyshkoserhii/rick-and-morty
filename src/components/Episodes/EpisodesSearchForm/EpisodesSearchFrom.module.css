@@ -1,0 +1,39 @@
+.Container {
+  display: grid;
+  grid-template-columns: 600px 180px;
+  grid-template-rows: 1fr;
+  column-gap: 40px;
+  justify-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+
+.Form {
+  display: grid;
+  grid-template-columns: 380px 180px;
+  grid-template-rows: 1fr;
+  column-gap: 40px;
+}
+
+.Input {
+  width: 100%;
+  padding: 6px;
+  font-size: 18px;
+  line-height: 20px;
+  outline: none;
+}
+
+.Button {
+  justify-self: center;
+  align-self: center;
+  width: 180px;
+  height: 40px;
+  font-size: 16px;
+  background-color: rgb(138, 43, 226);
+  color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
