@@ -8,9 +8,7 @@ export default function CharactersContent({ onChangePage }) {
   const [characters, setCharacters] = useState([]);
   const page = useContext(PageContext);
   const formValues = useContext(FormContext);
-  const species = formValues.species;
-  const status = formValues.status;
-  const gender = formValues.gender;
+  const { species, status, gender } = formValues;
 
   useEffect(() => {
     const charactersRender = async () => {
@@ -36,3 +34,7 @@ export default function CharactersContent({ onChangePage }) {
     <section>{characters && <CharacterList characters={characters} />}</section>
   );
 }
+
+CharactersContent.defaultProps = {
+  onChangePage: () => {},
+};

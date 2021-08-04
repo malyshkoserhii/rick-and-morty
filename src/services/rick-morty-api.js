@@ -21,8 +21,14 @@ export async function fetchCharacters(page, species, status, gender) {
     : Promise.reject(new Error('Not Found From Promise Reject'));
 }
 
-export async function fetchEpisodes() {
-  const response = await fetch(`${BASE_EPISODES_URL}`);
+export async function fetchEpisodes(page, query) {
+  if (query === 'all') {
+    query = '';
+  }
+
+  const response = await fetch(
+    `${BASE_EPISODES_URL}?page=${page}&name=${query}`,
+  );
 
   return response.ok
     ? await response.json()
