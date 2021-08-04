@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { FormContext } from '../../../views/CharactersView/CharactersView';
 import s from './CharacterFilterForm.module.css';
 
-export default function FilterForm({
+export default function CharacterFilterForm({
   onChangeSpecies,
   onChangeStatus,
   onChangeGender,
@@ -68,3 +68,9 @@ export default function FilterForm({
     </div>
   );
 }
+
+CharacterFilterForm.defaultProps = {
+  onChangeSpecies: () => {},
+  onChangeStatus: () => {},
+  onChangeGender: () => {},
+};

@@ -31,4 +31,9 @@ const PaginationButtons = ({ onPreviousPage, onNextPage }) => {
   );
 };
 
+PaginationButtons.defaultProps = {
+  onPreviousPage: () => {},
+  onNextPage: () => {},
+};
+
 export default PaginationButtons;
