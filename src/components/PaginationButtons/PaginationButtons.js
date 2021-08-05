@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PageContext } from '../../views/EpisodesView/EpisodesView';
+import { PageContext } from '../../views/CharactersView/CharactersView';
 import Button from './../Button/Button';
 import s from './PaginationButtons.module.css';
 
