@@ -1,24 +1,17 @@
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../Button';
-import { WatchListContext } from '../../../App';
+import s from './WatchListItem.module.css';
 
-import s from './EpisodesListItem.module.css';
-
-const EpisodesListItem = ({ episode }) => {
-  const contextValues = useContext(WatchListContext);
-  const { setWatchList } = contextValues;
-
-  const onAddToWatched = episode => {
-    const newEisode = {
-      watched: false,
-      ...episode,
-    };
-    setWatchList(state => [...state, newEisode]);
-  };
-
+export default function WatchListItem({ episode, onToggleCheckbox }) {
   return (
     <li className={s.EpisodesListItem}>
+      <input
+        className={s.Checkbox}
+        type="checkbox"
+        checked={episode.watched}
+        onChange={() => {
+          onToggleCheckbox(episode.id);
+        }}
+      />
       <p className={s.Info}>
         <span className={s.Type}>Name: </span>
         <span className={s.Content}> {episode.name}</span>
@@ -35,17 +28,11 @@ const EpisodesListItem = ({ episode }) => {
         <span className={s.Type}>Total characters: </span>
         <span className={s.Content}>{episode.characters.length}</span>
       </p>
-      <Button
-        key={episode.id + 50}
-        className={s.Button}
-        text="Add to Watch List"
-        onClick={() => onAddToWatched(episode)}
-      />
     </li>
   );
-};
+}
 
-EpisodesListItem.propTypes = {
+WatchListItem.propTypes = {
   episode: PropTypes.shape({
     airDate: PropTypes.string,
     characters: PropTypes.arrayOf(PropTypes.string),
@@ -57,8 +44,7 @@ EpisodesListItem.propTypes = {
   }),
 };
 
-EpisodesListItem.defaultProps = {
+WatchListItem.defaultProps = {
   episode: [],
+  onToggleCheckbox: () => {},
 };
-
-export default EpisodesListItem;

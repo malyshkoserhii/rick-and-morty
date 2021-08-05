@@ -1,6 +1,6 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { WatchListContext } from '../../App';
+
 import EpisodesSearchForm from '../../components/Episodes/EpisodesSearchForm/EpisodesSearchFrom';
 import EpisodesContent from '../../components/Episodes/EpisodesContent';
 import PaginationButtons from '../../components/PaginationButtons';
@@ -8,7 +8,6 @@ import PaginationButtons from '../../components/PaginationButtons';
 export const FormContext = createContext();
 
 export default function EpisodesView() {
-  const watchList = useContext(WatchListContext);
   const history = useHistory();
   const location = useLocation();
   const initialPage =
