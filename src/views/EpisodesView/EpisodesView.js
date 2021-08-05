@@ -1,10 +1,10 @@
 import { useState, createContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
+
 import EpisodesSearchForm from '../../components/Episodes/EpisodesSearchForm/EpisodesSearchFrom';
 import EpisodesContent from '../../components/Episodes/EpisodesContent';
 import PaginationButtons from '../../components/PaginationButtons';
 
-export const PageContext = createContext();
 export const FormContext = createContext();
 
 export default function EpisodesView() {
@@ -36,16 +36,15 @@ export default function EpisodesView() {
 
   return (
     <>
-      <PageContext.Provider value={page}>
-        <FormContext.Provider value={query}>
-          <EpisodesSearchForm onChangeQuery={onChangeQuery} />
-          <EpisodesContent onChangePage={onChangePage} />
-          <PaginationButtons
-            onPreviousPage={onPreviousPage}
-            onNextPage={onNextPage}
-          />
-        </FormContext.Provider>
-      </PageContext.Provider>
+      <FormContext.Provider value={query}>
+        <EpisodesSearchForm onChangeQuery={onChangeQuery} />
+        <EpisodesContent page={page} onChangePage={onChangePage} />
+        <PaginationButtons
+          page={page}
+          onPreviousPage={onPreviousPage}
+          onNextPage={onNextPage}
+        />
+      </FormContext.Provider>
     </>
   );
 }

@@ -1,12 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
-import { PageContext } from '../../../views/CharactersView/CharactersView';
+import PropTypes from 'prop-types';
 import { FormContext } from '../../../views/CharactersView/CharactersView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import CharacterList from '../CharactersList';
 
-export default function CharactersContent({ onChangePage }) {
+export default function CharactersContent({ page, onChangePage }) {
   const [characters, setCharacters] = useState([]);
-  const page = useContext(PageContext);
   const formValues = useContext(FormContext);
   const { species, status, gender } = formValues;
 
@@ -35,6 +34,12 @@ export default function CharactersContent({ onChangePage }) {
   );
 }
 
+CharactersContent.propTypes = {
+  page: PropTypes.number,
+  onChangePage: PropTypes.func,
+};
+
 CharactersContent.defaultProps = {
+  page: 1,
   onChangePage: () => {},
 };

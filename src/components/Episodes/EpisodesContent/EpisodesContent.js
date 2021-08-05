@@ -1,12 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
-import { PageContext } from '../../../views/EpisodesView/EpisodesView';
+import PropTypes from 'prop-types';
 import { FormContext } from '../../../views/EpisodesView/EpisodesView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import EpisodesList from '../EpisodesList';
 
-export default function EpisodesContent({ onChangePage }) {
+export default function EpisodesContent({ page, onChangePage }) {
   const [episodes, setEpisodes] = useState([]);
-  const page = useContext(PageContext);
   const query = useContext(FormContext);
   // const [error, setError] = useState('');
   // console.log('EpisodesContent', error);
@@ -34,6 +33,12 @@ export default function EpisodesContent({ onChangePage }) {
   );
 }
 
+EpisodesContent.propTypes = {
+  page: PropTypes.number,
+  onChangePage: PropTypes.func,
+};
+
 EpisodesContent.defaultProps = {
+  page: 1,
   onChangePage: () => {},
 };

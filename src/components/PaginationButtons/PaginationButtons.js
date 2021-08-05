@@ -1,11 +1,8 @@
-import { useContext } from 'react';
-import { PageContext } from '../../views/EpisodesView/EpisodesView';
+import PropTypes from 'prop-types';
 import Button from './../Button/Button';
 import s from './PaginationButtons.module.css';
 
-const PaginationButtons = ({ onPreviousPage, onNextPage }) => {
-  const page = useContext(PageContext);
-
+const PaginationButtons = ({ page, onPreviousPage, onNextPage }) => {
   return (
     <section className={s.pagination}>
       <div className={s.wrapper}>
@@ -31,7 +28,14 @@ const PaginationButtons = ({ onPreviousPage, onNextPage }) => {
   );
 };
 
+PaginationButtons.propTypes = {
+  page: PropTypes.number,
+  onPreviousPage: PropTypes.func,
+  onNextPage: PropTypes.func,
+};
+
 PaginationButtons.defaultProps = {
+  page: 1,
   onPreviousPage: () => {},
   onNextPage: () => {},
 };

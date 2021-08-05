@@ -1,6 +1,15 @@
+.Container {
+  padding-top: 20px;
+}
+
+.WatchListView {
+  width: 1140px;
+  margin: 0 auto;
+}
+
 .EpisodesListItem {
   display: grid;
-  grid-template-columns: 380px 240px 120px 180px 180px;
+  grid-template-columns: 180px 380px 240px 120px 180px;
   grid-template-rows: 1, 1fr;
   align-items: center;
   padding: 20px;
@@ -32,14 +41,6 @@
   font-size: 20px;
 }
 
-.Button {
-  justify-self: end;
-  width: 160px;
-  height: 40px;
-  font-size: 16px;
+.Checkbox {
   cursor: pointer;
-  outline: none;
-  border: none;
-  color: rgb(255, 255, 255);
-  background-color: rgb(138, 43, 226);
 }
