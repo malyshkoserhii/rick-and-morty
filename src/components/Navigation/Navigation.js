@@ -33,6 +33,15 @@ export default function Navigation() {
             Location
           </NavLink>
         </li>
+        <li className={s.NavItem}>
+          <NavLink
+            to="/watch"
+            className={s.NavLink}
+            activeClassName={s.ActiveLink}
+          >
+            Watch List
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

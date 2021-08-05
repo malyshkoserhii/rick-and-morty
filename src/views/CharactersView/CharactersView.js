@@ -4,7 +4,6 @@ import CharacterFilterForm from '../../components/Characters/CharacterFilterForm
 import CharacterContent from '../../components/Characters/CharactersContent';
 import PaginationButtons from '../../components/PaginationButtons';
 
-export const PageContext = createContext();
 export const FormContext = createContext();
 
 export default function CharactersView() {
@@ -57,21 +56,20 @@ export default function CharactersView() {
   };
 
   return (
-    <PageContext.Provider value={page}>
-      <FormContext.Provider value={formValues}>
-        <section>
-          <CharacterFilterForm
-            onChangeSpecies={onChangeSpecies}
-            onChangeStatus={onChangeStatus}
-            onChangeGender={onChangeGender}
-          />
-          <CharacterContent onChangePage={onChangePage} />
-          <PaginationButtons
-            onPreviousPage={onPreviousPage}
-            onNextPage={onNextPage}
-          />
-        </section>
-      </FormContext.Provider>
-    </PageContext.Provider>
+    <FormContext.Provider value={formValues}>
+      <section>
+        <CharacterFilterForm
+          onChangeSpecies={onChangeSpecies}
+          onChangeStatus={onChangeStatus}
+          onChangeGender={onChangeGender}
+        />
+        <CharacterContent page={page} onChangePage={onChangePage} />
+        <PaginationButtons
+          page={page}
+          onPreviousPage={onPreviousPage}
+          onNextPage={onNextPage}
+        />
+      </section>
+    </FormContext.Provider>
   );
 }
