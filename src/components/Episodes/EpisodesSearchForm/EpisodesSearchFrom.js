@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import Form from '../../Form';
+import Input from '../../Input';
 import Button from '../../Button';
 import { FormContext } from '../../../views/EpisodesView/EpisodesView';
 import s from './EpisodesSearchFrom.module.css';
@@ -28,8 +30,15 @@ export default function EpisodesSearchForm({ onChangeQuery }) {
 
   return (
     <div className={s.Container}>
-      <form className={s.Form} onSubmit={onFormSubmit}>
-        <label htmlFor="episodes">
+      <Form className={s.Form} onSubmit={onFormSubmit}>
+        <Input
+          id="episodes"
+          className={s.Input}
+          placeholder="Enter the episode"
+          autoComplete="off"
+          onChange={onInputChange}
+        />
+        {/* <label htmlFor="episodes">
           <input
             id="episodes"
             className={s.Input}
@@ -37,9 +46,9 @@ export default function EpisodesSearchForm({ onChangeQuery }) {
             autoComplete="off"
             onChange={onInputChange}
           />
-        </label>
+        </label> */}
         <Button type="submit" text="Search" className={s.Button} />
-      </form>
+      </Form>
       <Button
         type="button"
         text="Return All Episodes"

@@ -7,8 +7,6 @@ import EpisodesList from '../EpisodesList';
 export default function EpisodesContent({ page, onChangePage, setTotalPages }) {
   const [episodes, setEpisodes] = useState([]);
   const { query } = useContext(FormContext);
-  // const [error, setError] = useState('');
-  // console.log('EpisodesContent', error);
 
   useEffect(() => {
     const episodesRender = async () => {
@@ -18,7 +16,6 @@ export default function EpisodesContent({ page, onChangePage, setTotalPages }) {
         onChangePage(page);
         setTotalPages(response.info.pages);
       } catch (error) {
-        // setError(error.message);
         console.log(error);
         return [];
       }
