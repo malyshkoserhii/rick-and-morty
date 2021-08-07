@@ -4,9 +4,16 @@ import { FormContext } from '../../../views/CharactersView/CharactersView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import CharacterList from '../CharactersList';
 
+export default function CharactersContent({
+  page,
+  onChangePage,
+  setTotalPages,
+}) {
+
 export default function CharactersContent({ page, onChangePage, setError }) {
   const [characters, setCharacters] = useState([]);
   const formValues = useContext(FormContext);
+
   const { species, status, gender } = formValues;
 
   useEffect(() => {
@@ -19,6 +26,7 @@ export default function CharactersContent({ page, onChangePage, setError }) {
           gender,
         );
         setCharacters(response.results);
+        setTotalPages(response.info.pages);
         onChangePage(page);
       } catch (error) {
         setError(error.message);
@@ -36,9 +44,11 @@ export default function CharactersContent({ page, onChangePage, setError }) {
 CharactersContent.propTypes = {
   page: PropTypes.number,
   onChangePage: PropTypes.func,
+  setTotalPages: PropTypes.func,
 };
 
 CharactersContent.defaultProps = {
   page: 1,
   onChangePage: () => {},
+  setTotalPages: () => {},
 };

@@ -14,6 +14,7 @@ export default function LocationFilterForm({
   onChangeDimension,
 }) {
   const formValues = useContext(FormContext);
+  let { planetName, type, dimension, setPage } = formValues;
   const errorValues = useContext(ErrorContext);
   let { planetName, type, dimension } = formValues;
   const { error } = errorValues;
@@ -46,6 +47,8 @@ export default function LocationFilterForm({
     onChangeName('');
     onChangeType('');
     onChangeDimension('');
+    setPage(1);
+
     toast.success('All Locations returned');
   };
 

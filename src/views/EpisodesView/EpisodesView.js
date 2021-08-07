@@ -14,6 +14,11 @@ export default function EpisodesView() {
     Number(new URLSearchParams(location.search).get('page')) || 1;
   const [page, setPage] = useState(initialPage);
   const [query, setQuery] = useState('all');
+  const [totalPages, setTotalPages] = useState(null);
+
+  const formValues = {
+    query,
+    setPage,
   const [error, setError] = useState(null);
 
   const errorState = {
@@ -42,6 +47,19 @@ export default function EpisodesView() {
 
   return (
     <>
+      <FormContext.Provider value={formValues}>
+        <EpisodesSearchForm onChangeQuery={onChangeQuery} />
+        <EpisodesContent
+          page={page}
+          onChangePage={onChangePage}
+          setTotalPages={setTotalPages}
+        />
+        <PaginationButtons
+          page={page}
+          totalPages={totalPages}
+          onPreviousPage={onPreviousPage}
+          onNextPage={onNextPage}
+        />
       <FormContext.Provider value={query}>
         <ErrorContext.Provider value={errorState}>
           <EpisodesSearchForm onChangeQuery={onChangeQuery} />

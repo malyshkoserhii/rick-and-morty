@@ -4,6 +4,11 @@ import { FormContext } from '../../../views/EpisodesView/EpisodesView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import EpisodesList from '../EpisodesList';
 
+
+export default function EpisodesContent({ page, onChangePage, setTotalPages }) {
+  const [episodes, setEpisodes] = useState([]);
+  const { query } = useContext(FormContext);
+
 export default function EpisodesContent({ page, onChangePage, setError }) {
   const [episodes, setEpisodes] = useState([]);
   const query = useContext(FormContext);
@@ -14,9 +19,12 @@ export default function EpisodesContent({ page, onChangePage, setError }) {
         const response = await apiRickAndMorty.fetchEpisodes(page, query);
         setEpisodes(response.results);
         onChangePage(page);
+        setTotalPages(response.info.pages);
       } catch (error) {
+        console.log(error);
         setError(error.message);
         console.log(error.message);
+
         return [];
       }
     };
@@ -34,9 +42,11 @@ export default function EpisodesContent({ page, onChangePage, setError }) {
 EpisodesContent.propTypes = {
   page: PropTypes.number,
   onChangePage: PropTypes.func,
+  setTotalPages: PropTypes.func,
 };
 
 EpisodesContent.defaultProps = {
   page: 1,
   onChangePage: () => {},
+  setTotalPages: () => {},
 };
