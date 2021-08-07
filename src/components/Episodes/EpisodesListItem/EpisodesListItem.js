@@ -18,17 +18,13 @@ const EpisodesListItem = ({ episode }) => {
     };
 
     setWatchList(state => [newEpisode, ...state]);
-
-    toast.success(
-      `Episode ${episode.name} (${episode.episode}) has been added to your Watch List!`,
-    );
   };
 
   return (
     <>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -55,10 +51,14 @@ const EpisodesListItem = ({ episode }) => {
           <span className={s.Content}>{episode.characters.length}</span>
         </p>
         <Button
-          key={episode.id + 50}
           className={s.Button}
           text="Add to Watch List"
-          onClick={() => onAddToWatched(episode)}
+          onClick={() => {
+            onAddToWatched(episode);
+            toast.info(
+              `Episode ${episode.name} (${episode.episode}) has been added to your Watch List!`,
+            );
+          }}
         />
       </li>
     </>

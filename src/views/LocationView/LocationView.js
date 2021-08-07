@@ -64,22 +64,6 @@ export default function LocationView() {
 
   return (
     <FormContext.Provider value={formValues}>
-      <LocationFilterForm
-        onChangeName={onChangeName}
-        onChangeType={onChangeType}
-        onChangeDimension={onChangeDimension}
-      />
-      <LocationContent
-        page={page}
-        onChangePage={onChangePage}
-        setTotalPages={setTotalPages}
-      />
-      <PaginationButtons
-        page={page}
-        totalPages={totalPages}
-        onPreviousPage={onPreviousPage}
-        onNextPage={onNextPage}
-      />
       <ErrorContext.Provider value={errorValues}>
         <LocationFilterForm
           onChangeName={onChangeName}
@@ -89,10 +73,12 @@ export default function LocationView() {
         <LocationContent
           page={page}
           onChangePage={onChangePage}
+          setTotalPages={setTotalPages}
           setError={setError}
         />
         <PaginationButtons
           page={page}
+          totalPages={totalPages}
           onPreviousPage={onPreviousPage}
           onNextPage={onNextPage}
         />

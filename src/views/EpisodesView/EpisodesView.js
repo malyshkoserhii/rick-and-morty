@@ -1,6 +1,6 @@
 import { useState, createContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import EpisodesSearchForm from '../../components/Episodes/EpisodesSearchForm/EpisodesSearchFrom';
+import EpisodesSearchForm from '../../components/Episodes/EpisodesSearchForm/EpisodesSearchForm';
 import EpisodesContent from '../../components/Episodes/EpisodesContent';
 import PaginationButtons from '../../components/PaginationButtons';
 
@@ -15,10 +15,6 @@ export default function EpisodesView() {
   const [page, setPage] = useState(initialPage);
   const [query, setQuery] = useState('all');
   const [totalPages, setTotalPages] = useState(null);
-
-  const formValues = {
-    query,
-    setPage,
   const [error, setError] = useState(null);
 
   const errorState = {
@@ -47,29 +43,18 @@ export default function EpisodesView() {
 
   return (
     <>
-      <FormContext.Provider value={formValues}>
-        <EpisodesSearchForm onChangeQuery={onChangeQuery} />
-        <EpisodesContent
-          page={page}
-          onChangePage={onChangePage}
-          setTotalPages={setTotalPages}
-        />
-        <PaginationButtons
-          page={page}
-          totalPages={totalPages}
-          onPreviousPage={onPreviousPage}
-          onNextPage={onNextPage}
-        />
       <FormContext.Provider value={query}>
         <ErrorContext.Provider value={errorState}>
-          <EpisodesSearchForm onChangeQuery={onChangeQuery} />
+          <EpisodesSearchForm onChangeQuery={onChangeQuery} setPage={setPage} />
           <EpisodesContent
             page={page}
             onChangePage={onChangePage}
             setError={setError}
+            setTotalPages={setTotalPages}
           />
           <PaginationButtons
             page={page}
+            totalPages={totalPages}
             onPreviousPage={onPreviousPage}
             onNextPage={onNextPage}
           />

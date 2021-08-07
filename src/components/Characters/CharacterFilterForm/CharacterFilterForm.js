@@ -16,6 +16,10 @@ export default function CharacterFilterForm({
   const errorValues = useContext(ErrorContext);
   const { error } = errorValues;
 
+  const species = ['all', 'human', 'alien', 'unknown'];
+  const status = ['all', 'status', 'alive', 'dead', 'unknown'];
+  const gender = ['male', 'female', 'genderless', 'unknown'];
+
   const onFormSubmit = event => {
     event.preventDefault();
     toast.error(error);
@@ -59,10 +63,11 @@ export default function CharacterFilterForm({
             <option defaultValue={formValues.species}>
               {formValues.species}
             </option>
-            <option value="all">all</option>
-            <option value="human">human</option>
-            <option value="alien">alien</option>
-            <option value="unknown">unknown</option>
+            {species.map((el, idx) => (
+              <option key={idx} value={el}>
+                {el}
+              </option>
+            ))}
           </select>
 
           <p className={s.type}>Status</p>
@@ -70,10 +75,11 @@ export default function CharacterFilterForm({
             <option defaultValue={formValues.status}>
               {formValues.status}
             </option>
-            <option value="all">all</option>
-            <option value="alive">alive</option>
-            <option value="dead">dead</option>
-            <option value="unknown">unknown</option>
+            {status.map((el, idx) => (
+              <option key={idx} value={el}>
+                {el}
+              </option>
+            ))}
           </select>
 
           <p className={s.type}>Gender</p>
@@ -81,11 +87,11 @@ export default function CharacterFilterForm({
             <option defaultValue={formValues.gender}>
               {formValues.gender}
             </option>
-            <option value="all">all</option>
-            <option value="female">female</option>
-            <option value="male">male</option>
-            <option value="genderless ">genderless</option>
-            <option value="unknown">unknown</option>
+            {gender.map((el, idx) => (
+              <option key={idx} value={el}>
+                {el}
+              </option>
+            ))}
           </select>
         </form>
       </div>
