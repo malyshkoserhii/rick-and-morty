@@ -4,7 +4,7 @@ import { FormContext } from '../../../views/CharactersView/CharactersView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import CharacterList from '../CharactersList';
 
-export default function CharactersContent({ page, onChangePage }) {
+export default function CharactersContent({ page, onChangePage, setError }) {
   const [characters, setCharacters] = useState([]);
   const formValues = useContext(FormContext);
   const { species, status, gender } = formValues;
@@ -21,6 +21,7 @@ export default function CharactersContent({ page, onChangePage }) {
         setCharacters(response.results);
         onChangePage(page);
       } catch (error) {
+        setError(error.message);
         console.log(error);
         return [];
       }

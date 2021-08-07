@@ -1,6 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from '../../Button';
-import { FormContext } from '../../../views/LocationView/LocationView';
+import {
+  FormContext,
+  ErrorContext,
+} from '../../../views/LocationView/LocationView';
 import s from './LocationFilterForm.module.css';
 
 export default function LocationFilterForm({
@@ -9,7 +14,19 @@ export default function LocationFilterForm({
   onChangeDimension,
 }) {
   const formValues = useContext(FormContext);
+  const errorValues = useContext(ErrorContext);
   let { planetName, type, dimension } = formValues;
+  const { error } = errorValues;
+  console.log(error);
+  const isFirst = useRef(true);
+
+  useEffect(() => {
+    if (isFirst) {
+      isFirst.current = false;
+      return;
+    }
+    toast.error(error);
+  }, [error]);
 
   const onFormSubmit = event => {
     event.preventDefault();
@@ -29,6 +46,7 @@ export default function LocationFilterForm({
     onChangeName('');
     onChangeType('');
     onChangeDimension('');
+    toast.success('All Locations returned');
   };
 
   const onInputChange = event => {
@@ -50,47 +68,60 @@ export default function LocationFilterForm({
   };
 
   return (
-    <div className={s.Container}>
-      <form className={s.Form} onSubmit={onFormSubmit}>
-        <label htmlFor="name">
-          <input
-            id="name"
-            name="planetName"
-            className={s.Input}
-            placeholder="Enter name of the Planet"
-            autoComplete="off"
-            onChange={onInputChange}
-          />
-        </label>
-        <label htmlFor="type">
-          <input
-            id="type"
-            name="type"
-            className={s.Input}
-            placeholder="Enter a type of the Place"
-            autoComplete="off"
-            onChange={onInputChange}
-          />
-        </label>
-        <label htmlFor="dimension">
-          <input
-            id="dimension"
-            name="dimension"
-            className={s.Input}
-            placeholder="Enter dimension the of the Planet"
-            autoComplete="off"
-            onChange={onInputChange}
-          />
-        </label>
-        <Button type="submit" text="Search" className={s.Button} />
-      </form>
-      <Button
-        type="button"
-        text="Return All Locations"
-        className={s.Button}
-        onClick={onResetForm}
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
-    </div>
+      <div className={s.Container}>
+        <form className={s.Form} onSubmit={onFormSubmit}>
+          <label htmlFor="name">
+            <input
+              id="name"
+              name="planetName"
+              className={s.Input}
+              placeholder="Enter name of the Planet"
+              autoComplete="off"
+              onChange={onInputChange}
+            />
+          </label>
+          <label htmlFor="type">
+            <input
+              id="type"
+              name="type"
+              className={s.Input}
+              placeholder="Enter a type of the Place"
+              autoComplete="off"
+              onChange={onInputChange}
+            />
+          </label>
+          <label htmlFor="dimension">
+            <input
+              id="dimension"
+              name="dimension"
+              className={s.Input}
+              placeholder="Enter dimension the of the Planet"
+              autoComplete="off"
+              onChange={onInputChange}
+            />
+          </label>
+          <Button type="submit" text="Search" className={s.Button} />
+        </form>
+        <Button
+          type="button"
+          text="Return All Locations"
+          className={s.Button}
+          onClick={onResetForm}
+        />
+      </div>
+    </>
   );
 }
 

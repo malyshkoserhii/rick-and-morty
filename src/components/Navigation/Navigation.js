@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import ROUTE from '../../helpers/routes';
 import s from './Navigation.module.css';
 
 export default function Navigation() {
@@ -8,7 +9,7 @@ export default function Navigation() {
         <li className={s.NavItem}>
           <NavLink
             exact
-            to="/"
+            to={ROUTE.CHARACTERS}
             className={s.NavLink}
             activeClassName={s.ActiveLink}
           >
@@ -17,7 +18,7 @@ export default function Navigation() {
         </li>
         <li className={s.NavItem}>
           <NavLink
-            to="/episodes"
+            to={ROUTE.EPISODES}
             className={s.NavLink}
             activeClassName={s.ActiveLink}
           >
@@ -26,7 +27,7 @@ export default function Navigation() {
         </li>
         <li className={s.NavItem}>
           <NavLink
-            to="/location"
+            to={ROUTE.LOCATION}
             className={s.NavLink}
             activeClassName={s.ActiveLink}
           >
@@ -35,7 +36,7 @@ export default function Navigation() {
         </li>
         <li className={s.NavItem}>
           <NavLink
-            to="/watch"
+            to={ROUTE.WATCH_LIST}
             className={s.NavLink}
             activeClassName={s.ActiveLink}
           >

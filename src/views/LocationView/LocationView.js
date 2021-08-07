@@ -5,6 +5,7 @@ import LocationContent from '../../components/Location/LocationContent';
 import PaginationButtons from '../../components/PaginationButtons';
 
 export const FormContext = createContext();
+export const ErrorContext = createContext();
 
 export default function LocationView() {
   const history = useHistory();
@@ -19,11 +20,17 @@ export default function LocationView() {
   const [planetName, setPlanetName] = useState(initialName);
   const [type, setType] = useState(initialType);
   const [dimension, setDimension] = useState(initialDimension);
+  const [error, setError] = useState('');
 
   const formValues = {
     planetName,
     type,
     dimension,
+  };
+
+  const errorValues = {
+    error,
+    setError,
   };
 
   const onPreviousPage = () => {
@@ -55,17 +62,23 @@ export default function LocationView() {
 
   return (
     <FormContext.Provider value={formValues}>
-      <LocationFilterForm
-        onChangeName={onChangeName}
-        onChangeType={onChangeType}
-        onChangeDimension={onChangeDimension}
-      />
-      <LocationContent page={page} onChangePage={onChangePage} />
-      <PaginationButtons
-        page={page}
-        onPreviousPage={onPreviousPage}
-        onNextPage={onNextPage}
-      />
+      <ErrorContext.Provider value={errorValues}>
+        <LocationFilterForm
+          onChangeName={onChangeName}
+          onChangeType={onChangeType}
+          onChangeDimension={onChangeDimension}
+        />
+        <LocationContent
+          page={page}
+          onChangePage={onChangePage}
+          setError={setError}
+        />
+        <PaginationButtons
+          page={page}
+          onPreviousPage={onPreviousPage}
+          onNextPage={onNextPage}
+        />
+      </ErrorContext.Provider>
     </FormContext.Provider>
   );
 }
