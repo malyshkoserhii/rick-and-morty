@@ -9,12 +9,12 @@ const LocationListItem = ({ place }) => {
         <span>{place.name}</span>
       </p>
       <p>
-        <span className={s.Type}>Dimension: </span>
-        <span>{place.dimension} </span>
-      </p>
-      <p>
         <span className={s.Type}> Type: </span>
         <span>{place.type}</span>
+      </p>
+      <p>
+        <span className={s.Type}>Dimension: </span>
+        <span>{place.dimension} </span>
       </p>
       <p>
         <span className={s.Type}> Total Residents: </span>

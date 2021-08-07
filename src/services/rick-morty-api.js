@@ -36,10 +36,22 @@ export async function fetchEpisodes(page, query) {
     : Promise.reject(new Error(`Episode ${query} not found`));
 }
 
-export async function fetchLocation(page) {
-  const response = await fetch(`${BASE_LOCATION_URL}?page=${page}`);
+export async function fetchLocation(page, planetName, type, dimension) {
+  if (planetName === 'all') {
+    planetName = '';
+  }
+  if (type === 'all') {
+    type = '';
+  }
+  if (dimension === 'all') {
+    dimension = '';
+  }
+
+  const response = await fetch(
+    `${BASE_LOCATION_URL}?page=${page}&name=${planetName}&type=${type}&dimension=${dimension}`,
+  );
 
   return response.ok
     ? await response.json()
-    : Promise.reject(new Error(`Episode ${BASE_LOCATION_URL} not found`));
+    : Promise.reject(new Error(`Not found`));
 }

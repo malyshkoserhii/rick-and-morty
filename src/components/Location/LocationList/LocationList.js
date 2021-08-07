@@ -4,7 +4,6 @@ import s from './LocationList.module.css';
 import LocationListItem from '../LocationListItem';
 
 const LocationList = ({ places }) => {
-  console.log(places);
   return (
     <ul className={s.LocationList}>
       {places.map(place => (
