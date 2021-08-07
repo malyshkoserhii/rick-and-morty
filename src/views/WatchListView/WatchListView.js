@@ -1,29 +1,24 @@
-import { useEffect, useState } from 'react';
-// import WatchListItem from '../../components/WatchList/WatchListItem';
+import { useContext } from 'react';
+import { WatchListContext } from '../../App';
 import s from './WatchListView.module.css';
 
 const WatchListView = () => {
-  const [storedEpisodes, setStoredEpisodes] = useState(() => {
-    const recordedEpisode = window.localStorage.getItem('episodes');
-    return JSON.parse(recordedEpisode) ?? [];
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem('episodes', JSON.stringify(storedEpisodes));
-  }, [storedEpisodes]);
+  const watchListContextValues = useContext(WatchListContext);
+  const { watchList, setWatchList } = watchListContextValues;
 
   const onToggleCheckbox = id => {
-    setStoredEpisodes(state => {
+    setWatchList(state => {
       return state.map(episode => {
         if (episode.id === id) {
           const updatedEpisode = {
             ...episode,
             watched: !episode.watched,
           };
+
           return updatedEpisode;
         }
 
-        return storedEpisodes;
+        return state;
       });
     });
   };
@@ -31,7 +26,7 @@ const WatchListView = () => {
   return (
     <section className={s.Container}>
       <ul className={s.WatchListView}>
-        {storedEpisodes.map(episode => (
+        {watchList.map(episode => (
           <li key={episode.id} className={s.EpisodesListItem}>
             <input
               className={s.Checkbox}
