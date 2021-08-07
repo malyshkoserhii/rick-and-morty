@@ -21,11 +21,13 @@ export default function CharactersView() {
   const [species, setSpecies] = useState(initialSpecies);
   const [status, setStatus] = useState(initialStatus);
   const [gender, setGender] = useState(initialGender);
+  const [totalPages, setTotalPages] = useState(null);
 
   const formValues = {
     species,
     gender,
     status,
+    page,
   };
 
   const onPreviousPage = () => {
@@ -59,13 +61,19 @@ export default function CharactersView() {
     <FormContext.Provider value={formValues}>
       <>
         <CharacterFilterForm
+          value={totalPages}
           onChangeSpecies={onChangeSpecies}
           onChangeStatus={onChangeStatus}
           onChangeGender={onChangeGender}
         />
-        <CharacterContent page={page} onChangePage={onChangePage} />
+        <CharacterContent
+          page={page}
+          onChangePage={onChangePage}
+          setTotalPages={setTotalPages}
+        />
         <PaginationButtons
           page={page}
+          totalPages={totalPages}
           onPreviousPage={onPreviousPage}
           onNextPage={onNextPage}
         />

@@ -19,11 +19,13 @@ export default function LocationView() {
   const [planetName, setPlanetName] = useState(initialName);
   const [type, setType] = useState(initialType);
   const [dimension, setDimension] = useState(initialDimension);
+  const [totalPages, setTotalPages] = useState(null);
 
   const formValues = {
     planetName,
     type,
     dimension,
+    setPage,
   };
 
   const onPreviousPage = () => {
@@ -60,9 +62,14 @@ export default function LocationView() {
         onChangeType={onChangeType}
         onChangeDimension={onChangeDimension}
       />
-      <LocationContent page={page} onChangePage={onChangePage} />
+      <LocationContent
+        page={page}
+        onChangePage={onChangePage}
+        setTotalPages={setTotalPages}
+      />
       <PaginationButtons
         page={page}
+        totalPages={totalPages}
         onPreviousPage={onPreviousPage}
         onNextPage={onNextPage}
       />

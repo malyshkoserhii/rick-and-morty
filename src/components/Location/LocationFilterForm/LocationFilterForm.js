@@ -9,7 +9,7 @@ export default function LocationFilterForm({
   onChangeDimension,
 }) {
   const formValues = useContext(FormContext);
-  let { planetName, type, dimension } = formValues;
+  let { planetName, type, dimension, setPage } = formValues;
 
   const onFormSubmit = event => {
     event.preventDefault();
@@ -29,6 +29,7 @@ export default function LocationFilterForm({
     onChangeName('');
     onChangeType('');
     onChangeDimension('');
+    setPage(1);
   };
 
   const onInputChange = event => {
