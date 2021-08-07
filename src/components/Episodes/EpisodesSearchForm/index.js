@@ -1,1 +1,1 @@
-export { default } from './EpisodesSearchFrom';
+export { default } from './EpisodesSearchForm';

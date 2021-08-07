@@ -3,6 +3,7 @@ import { useState, useEffect, createContext, Suspense, lazy } from 'react';
 import AppBar from './components/AppBar';
 import Spinner from './components/Spinner';
 import ROUTE from './helpers/routes';
+import NotFoundView from './views/NotFoundView';
 
 export const WatchListContext = createContext();
 
@@ -51,6 +52,10 @@ export default function App() {
             </Route>
             <Route path={ROUTE.WATCH_LIST}>
               <WatchListView />
+            </Route>
+
+            <Route>
+              <NotFoundView />
             </Route>
           </Switch>
         </Suspense>

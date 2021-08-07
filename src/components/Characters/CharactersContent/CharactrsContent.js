@@ -8,9 +8,8 @@ export default function CharactersContent({
   page,
   onChangePage,
   setTotalPages,
+  setError,
 }) {
-
-export default function CharactersContent({ page, onChangePage, setError }) {
   const [characters, setCharacters] = useState([]);
   const formValues = useContext(FormContext);
 

@@ -4,10 +4,7 @@ import { FormContext } from '../../../views/LocationView/LocationView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import LocationList from '../LocationList';
 
-
-const LocationContent = ({ page, onChangePage, setTotalPages }) => {
-const LocationContent = ({ page, onChangePage, setError }) => {
-
+const LocationContent = ({ page, onChangePage, setError, setTotalPages }) => {
   const [places, setPlaces] = useState([]);
   const formValues = useContext(FormContext);
   const { planetName, type, dimension } = formValues;

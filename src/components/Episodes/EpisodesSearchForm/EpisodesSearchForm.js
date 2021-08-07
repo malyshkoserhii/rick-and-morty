@@ -1,12 +1,6 @@
-
-import { useContext } from 'react';
-import Form from '../../Form';
-import Input from '../../Input';
-
 import { useContext, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Button from '../../Button';
 import {
   FormContext,
@@ -14,14 +8,13 @@ import {
 } from '../../../views/EpisodesView/EpisodesView';
 import s from './EpisodesSearchFrom.module.css';
 
-export default function EpisodesSearchForm({ onChangeQuery }) {
-  let { query, setPage } = useContext(FormContext);
+export default function EpisodesSearchForm({ onChangeQuery, setPage }) {
   let query = useContext(FormContext);
   const { error } = useContext(ErrorContext);
+
   useEffect(() => {
     toast.error(error);
   }, [error]);
-
 
   const onFormSubmit = event => {
     event.preventDefault();
@@ -40,30 +33,8 @@ export default function EpisodesSearchForm({ onChangeQuery }) {
 
   const onReturnAllEpisodes = () => {
     onChangeQuery('all');
-
-    setPage(1);
-  };
-
-  return (
-    <div className={s.Container}>
-      <Form className={s.Form} onSubmit={onFormSubmit}>
-        <label htmlFor="episodes">
-          <input
-            id="episodes"
-            className={s.Input}
-            placeholder="Enter the episode"
-            autoComplete="off"
-            onChange={onInputChange}
-          />
-        </label>
-        <Button type="submit" text="Search" className={s.Button} />
-      </Form>
-      <Button
-        type="button"
-        text="Return All Episodes"
-        className={s.Button}
-        onClick={onReturnAllEpisodes}
     toast.success('All Episodes returned');
+    setPage(1);
   };
 
   return (
