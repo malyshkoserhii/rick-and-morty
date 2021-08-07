@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
+import Button from '../../Button';
 import s from './WatchListItem.module.css';
 
-export default function WatchListItem({ episode, onToggleCheckbox }) {
+export default function WatchListItem({
+  episode,
+  onToggleCheckbox,
+  onDeleteEpisode,
+}) {
   return (
     <li className={s.EpisodesListItem}>
       <input
@@ -30,6 +35,12 @@ export default function WatchListItem({ episode, onToggleCheckbox }) {
           <span className={s.Content}>{episode.characters.length}</span>
         )}
       </p>
+      <Button
+        key={episode.id + 50}
+        className={s.Button}
+        text="Delete Episode"
+        onClick={() => onDeleteEpisode(episode.id)}
+      />
     </li>
   );
 }

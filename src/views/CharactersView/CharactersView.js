@@ -5,6 +5,7 @@ import CharacterContent from '../../components/Characters/CharactersContent';
 import PaginationButtons from '../../components/PaginationButtons';
 
 export const FormContext = createContext();
+export const ErrorContext = createContext();
 
 export default function CharactersView() {
   const history = useHistory();
@@ -22,12 +23,19 @@ export default function CharactersView() {
   const [status, setStatus] = useState(initialStatus);
   const [gender, setGender] = useState(initialGender);
   const [totalPages, setTotalPages] = useState(null);
+  const [error, setError] = useState('');
+
 
   const formValues = {
     species,
     gender,
     status,
     page,
+  };
+
+  const errorState = {
+    error,
+    setError,
   };
 
   const onPreviousPage = () => {
@@ -59,7 +67,7 @@ export default function CharactersView() {
 
   return (
     <FormContext.Provider value={formValues}>
-      <>
+      <ErrorContext.Provider value={errorState}>
         <CharacterFilterForm
           value={totalPages}
           onChangeSpecies={onChangeSpecies}
@@ -70,6 +78,7 @@ export default function CharactersView() {
           page={page}
           onChangePage={onChangePage}
           setTotalPages={setTotalPages}
+          setError={setError}
         />
         <PaginationButtons
           page={page}
@@ -77,7 +86,7 @@ export default function CharactersView() {
           onPreviousPage={onPreviousPage}
           onNextPage={onNextPage}
         />
-      </>
+      </ErrorContext.Provider>
     </FormContext.Provider>
   );
 }

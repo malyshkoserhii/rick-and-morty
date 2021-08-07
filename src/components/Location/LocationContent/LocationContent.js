@@ -4,7 +4,10 @@ import { FormContext } from '../../../views/LocationView/LocationView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import LocationList from '../LocationList';
 
+
 const LocationContent = ({ page, onChangePage, setTotalPages }) => {
+const LocationContent = ({ page, onChangePage, setError }) => {
+
   const [places, setPlaces] = useState([]);
   const formValues = useContext(FormContext);
   const { planetName, type, dimension } = formValues;
@@ -22,6 +25,7 @@ const LocationContent = ({ page, onChangePage, setTotalPages }) => {
         setTotalPages(response.info.pages);
         onChangePage(page);
       } catch (error) {
+        setError(error.message);
         console.log(error);
         return [];
       }

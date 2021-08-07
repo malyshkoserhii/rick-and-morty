@@ -1,6 +1,6 @@
 .EpisodesListItem {
   display: grid;
-  grid-template-columns: 180px 380px 240px 120px 180px;
+  grid-template-columns: 60px 380px 220px 120px 160px 160px;
   grid-template-rows: 1, 1fr;
   align-items: center;
   padding: 20px;
@@ -34,4 +34,16 @@
 
 .Checkbox {
   cursor: pointer;
+}
+
+.Button {
+  justify-self: end;
+  width: 160px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 0, 0);
 }

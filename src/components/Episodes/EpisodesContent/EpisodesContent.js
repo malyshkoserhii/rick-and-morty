@@ -4,9 +4,14 @@ import { FormContext } from '../../../views/EpisodesView/EpisodesView';
 import * as apiRickAndMorty from '../../../services/rick-morty-api';
 import EpisodesList from '../EpisodesList';
 
+
 export default function EpisodesContent({ page, onChangePage, setTotalPages }) {
   const [episodes, setEpisodes] = useState([]);
   const { query } = useContext(FormContext);
+
+export default function EpisodesContent({ page, onChangePage, setError }) {
+  const [episodes, setEpisodes] = useState([]);
+  const query = useContext(FormContext);
 
   useEffect(() => {
     const episodesRender = async () => {
@@ -17,6 +22,9 @@ export default function EpisodesContent({ page, onChangePage, setTotalPages }) {
         setTotalPages(response.info.pages);
       } catch (error) {
         console.log(error);
+        setError(error.message);
+        console.log(error.message);
+
         return [];
       }
     };

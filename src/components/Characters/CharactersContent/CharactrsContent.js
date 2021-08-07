@@ -9,6 +9,8 @@ export default function CharactersContent({
   onChangePage,
   setTotalPages,
 }) {
+
+export default function CharactersContent({ page, onChangePage, setError }) {
   const [characters, setCharacters] = useState([]);
   const formValues = useContext(FormContext);
 
@@ -27,6 +29,7 @@ export default function CharactersContent({
         setTotalPages(response.info.pages);
         onChangePage(page);
       } catch (error) {
+        setError(error.message);
         console.log(error);
         return [];
       }
