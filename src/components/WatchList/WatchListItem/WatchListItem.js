@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import s from './WatchListItem.module.css';
 
 export default function WatchListItem({ episode, onToggleCheckbox }) {
+  console.log(episode);
   return (
     <li className={s.EpisodesListItem}>
       <input
@@ -26,7 +27,7 @@ export default function WatchListItem({ episode, onToggleCheckbox }) {
       </p>
       <p className={s.Info}>
         <span className={s.Type}>Total characters: </span>
-        <span className={s.Content}>{episode.characters.length}</span>
+        {/* <span className={s.Content}>{episode.characters.length}</span> */}
       </p>
     </li>
   );

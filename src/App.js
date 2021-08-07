@@ -15,7 +15,10 @@ export default function App() {
     return JSON.parse(storedEpisodes) ?? [];
   });
 
+  console.log('watchList from APP', watchList);
+
   useEffect(() => {
+    console.log('useEfffect in APP');
     window.localStorage.setItem('episodes', JSON.stringify(watchList));
   }, [watchList]);
 

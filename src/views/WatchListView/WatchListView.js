@@ -15,10 +15,11 @@ const WatchListView = () => {
             watched: !episode.watched,
           };
 
-          return updatedEpisode;
+          return [...state, updatedEpisode];
         }
+        console.log('state', state);
 
-        return state;
+        // return state;
       });
     });
   };
@@ -50,9 +51,9 @@ const WatchListView = () => {
             </p>
             <p className={s.Info}>
               <span className={s.Type}>Total characters: </span>
-              {episode.characters.length && (
+              {/* {episode.characters.length && (
                 <span className={s.Content}>{episode.characters.length}</span>
-              )}
+              )} */}
             </p>
           </li>
         ))}
