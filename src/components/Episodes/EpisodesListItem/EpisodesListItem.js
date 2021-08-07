@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 import Button from '../../Button';
 import { WatchListContext } from '../../../App';
@@ -16,33 +18,50 @@ const EpisodesListItem = ({ episode }) => {
     };
 
     setWatchList(state => [newEpisode, ...state]);
+
+    toast.success(
+      `Episode ${episode.name} (${episode.episode}) has been added to your Watch List!`,
+    );
   };
 
   return (
-    <li className={s.EpisodesListItem}>
-      <p className={s.Info}>
-        <span className={s.Type}>Name: </span>
-        <span className={s.Content}> {episode.name}</span>
-      </p>
-      <p className={s.Info}>
-        <span className={s.Type}>Air Date: </span>
-        <span className={s.Content}>{episode.air_date}</span>
-      </p>
-      <p className={s.Info}>
-        <span className={s.Type}>Episode: </span>
-        <span className={s.Content}> {episode.episode}</span>
-      </p>
-      <p className={s.Info}>
-        <span className={s.Type}>Total characters: </span>
-        <span className={s.Content}>{episode.characters.length}</span>
-      </p>
-      <Button
-        key={episode.id + 50}
-        className={s.Button}
-        text="Add to Watch List"
-        onClick={() => onAddToWatched(episode)}
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
-    </li>
+      <li className={s.EpisodesListItem}>
+        <p className={s.Info}>
+          <span className={s.Type}>Name: </span>
+          <span className={s.Content}> {episode.name}</span>
+        </p>
+        <p className={s.Info}>
+          <span className={s.Type}>Air Date: </span>
+          <span className={s.Content}>{episode.air_date}</span>
+        </p>
+        <p className={s.Info}>
+          <span className={s.Type}>Episode: </span>
+          <span className={s.Content}> {episode.episode}</span>
+        </p>
+        <p className={s.Info}>
+          <span className={s.Type}>Total characters: </span>
+          <span className={s.Content}>{episode.characters.length}</span>
+        </p>
+        <Button
+          key={episode.id + 50}
+          className={s.Button}
+          text="Add to Watch List"
+          onClick={() => onAddToWatched(episode)}
+        />
+      </li>
+    </>
   );
 };
 
