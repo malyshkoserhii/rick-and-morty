@@ -15,18 +15,18 @@ export default function App() {
     return JSON.parse(storedEpisodes) ?? [];
   });
 
-  const watchListConrextValues = {
-    watchList,
-    setWatchList,
-  };
-
   useEffect(() => {
     window.localStorage.setItem('episodes', JSON.stringify(watchList));
   }, [watchList]);
 
+  const watchListContextValues = {
+    watchList,
+    setWatchList,
+  };
+
   return (
     <>
-      <WatchListContext.Provider value={watchListConrextValues}>
+      <WatchListContext.Provider value={watchListContextValues}>
         <AppBar />
         <Suspense fallback={<Spinner />}>
           <Switch>
