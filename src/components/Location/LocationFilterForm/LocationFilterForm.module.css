@@ -1,0 +1,37 @@
+.Container {
+  display: grid;
+  grid-template-columns: 1200px 160px;
+  grid-template-rows: 1fr;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+}
+
+.Form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.Input {
+  width: 100%;
+  padding: 6px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+}
+
+.Button {
+  width: 160px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(138, 43, 226);
+}

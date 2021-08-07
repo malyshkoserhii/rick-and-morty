@@ -29,9 +29,7 @@ export default function CharactersContent({ page, onChangePage }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, species, status, gender]);
 
-  return (
-    <section>{characters && <CharacterList characters={characters} />}</section>
-  );
+  return <>{characters && <CharacterList characters={characters} />}</>;
 }
 
 CharactersContent.propTypes = {
