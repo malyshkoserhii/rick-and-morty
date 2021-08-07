@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import s from './WatchListItem.module.css';
 
 export default function WatchListItem({ episode, onToggleCheckbox }) {
-  console.log(episode);
   return (
     <li className={s.EpisodesListItem}>
       <input

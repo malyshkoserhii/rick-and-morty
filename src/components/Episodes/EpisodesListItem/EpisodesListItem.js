@@ -10,11 +10,11 @@ const EpisodesListItem = ({ episode }) => {
   const { setWatchList } = contextValues;
 
   const onAddToWatched = episode => {
-    const newEisode = {
+    const newEpisode = {
       watched: false,
       ...episode,
     };
-    setWatchList(state => [...state, newEisode]);
+    setWatchList(state => [newEpisode, ...state]);
   };
 
   return (
