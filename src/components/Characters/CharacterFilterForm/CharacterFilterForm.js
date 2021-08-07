@@ -18,7 +18,7 @@ export default function CharacterFilterForm({
 
   const species = ['all', 'human', 'alien', 'unknown'];
   const status = ['all', 'status', 'alive', 'dead', 'unknown'];
-  const gender = ['male', 'female', 'genderless', 'unknown'];
+  const gender = ['all', 'male', 'female', 'genderless', 'unknown'];
 
   const onFormSubmit = event => {
     event.preventDefault();

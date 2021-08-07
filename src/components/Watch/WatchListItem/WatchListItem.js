@@ -28,7 +28,7 @@ export default function WatchListItem({
           type="checkbox"
           checked={episode.watched}
           onChange={() => {
-            onToggleCheckbox(episode.id);
+            onToggleCheckbox(episode.uniqueId);
           }}
         />
         <p className={s.Info}>
@@ -54,7 +54,7 @@ export default function WatchListItem({
           className={s.Button}
           text="Delete Episode"
           onClick={() => {
-            onDeleteEpisode(episode.id);
+            onDeleteEpisode(episode.uniqueId);
             toast.info(`Episode has been deleted from your Watch List!`);
           }}
         />

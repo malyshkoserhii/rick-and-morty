@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import PropTypes from 'prop-types';
+import shortid from 'shortid';
 import Button from '../../Button';
 import { WatchListContext } from '../../../App';
 
@@ -14,6 +15,7 @@ const EpisodesListItem = ({ episode }) => {
   const onAddToWatched = episode => {
     const newEpisode = {
       watched: false,
+      uniqueId: shortid.generate(),
       ...episode,
     };
 

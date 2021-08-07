@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Spinner from '../Spinner';
 import Button from './../Button/Button';
 import s from './PaginationButtons.module.css';
 
@@ -8,7 +9,9 @@ const PaginationButtons = ({
   onPreviousPage,
   onNextPage,
 }) => {
-  return (
+  return !totalPages ? (
+    <Spinner />
+  ) : (
     <section className={s.pagination}>
       <div className={s.wrapper}>
         <div className={s.prevBtnWrapper}>
