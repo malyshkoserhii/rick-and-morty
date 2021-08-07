@@ -16,9 +16,7 @@ export default function LocationFilterForm({
   const formValues = useContext(FormContext);
   let { planetName, type, dimension, setPage } = formValues;
   const errorValues = useContext(ErrorContext);
-  let { planetName, type, dimension } = formValues;
   const { error } = errorValues;
-  console.log(error);
   const isFirst = useRef(true);
 
   useEffect(() => {
