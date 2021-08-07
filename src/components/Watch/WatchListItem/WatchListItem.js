@@ -26,7 +26,9 @@ export default function WatchListItem({ episode, onToggleCheckbox }) {
       </p>
       <p className={s.Info}>
         <span className={s.Type}>Total characters: </span>
-        {/* <span className={s.Content}>{episode.characters.length}</span> */}
+        {episode.characters.length ?? (
+          <span className={s.Content}>{episode.characters.length}</span>
+        )}
       </p>
     </li>
   );

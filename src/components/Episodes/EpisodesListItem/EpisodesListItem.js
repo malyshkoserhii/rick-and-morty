@@ -14,6 +14,7 @@ const EpisodesListItem = ({ episode }) => {
       watched: false,
       ...episode,
     };
+
     setWatchList(state => [newEpisode, ...state]);
   };
 
