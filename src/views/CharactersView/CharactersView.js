@@ -57,7 +57,7 @@ export default function CharactersView() {
 
   return (
     <FormContext.Provider value={formValues}>
-      <section>
+      <>
         <CharacterFilterForm
           onChangeSpecies={onChangeSpecies}
           onChangeStatus={onChangeStatus}
@@ -69,7 +69,7 @@ export default function CharactersView() {
           onPreviousPage={onPreviousPage}
           onNextPage={onNextPage}
         />
-      </section>
+      </>
     </FormContext.Provider>
   );
 }
