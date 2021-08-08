@@ -35,7 +35,7 @@ const WatchListView = () => {
         {watchList.length === 0 ? (
           <p className={s.Notification}>
             {' '}
-            You have not still added Episodes in your Watch Lists{' '}
+            You have not added Episodes in your Watch List yet{' '}
           </p>
         ) : (
           <WatchList watchList={watchList}>

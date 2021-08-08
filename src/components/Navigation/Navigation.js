@@ -13,7 +13,7 @@ export default function Navigation() {
             className={s.NavLink}
             activeClassName={s.ActiveLink}
           >
-            Caharacters
+            Characters
           </NavLink>
         </li>
         <li className={s.NavItem}>
