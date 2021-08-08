@@ -19,7 +19,11 @@ export async function fetchCharacters(page, species, status, gender) {
 
   return response.ok
     ? await response.json()
-    : Promise.reject(new Error('Not Found'));
+    : Promise.reject(
+        new Error(
+          `Request failed. Such filter parameters is not avaliable. Please try other filter`,
+        ),
+      );
 }
 
 export async function fetchEpisodes(page, query) {

@@ -10,7 +10,7 @@ import s from './EpisodesSearchFrom.module.css';
 
 export default function EpisodesSearchForm({ onChangeQuery, setPage }) {
   let query = useContext(FormContext);
-  const { error } = useContext(ErrorContext);
+  const { error, setError } = useContext(ErrorContext);
 
   useEffect(() => {
     toast.error(error);
@@ -19,6 +19,7 @@ export default function EpisodesSearchForm({ onChangeQuery, setPage }) {
   const onFormSubmit = event => {
     event.preventDefault();
     onChangeQuery(query);
+    setPage(1);
   };
 
   const onInputChange = event => {
@@ -35,6 +36,7 @@ export default function EpisodesSearchForm({ onChangeQuery, setPage }) {
     onChangeQuery('all');
     toast.success('All Episodes returned');
     setPage(1);
+    setError(null);
   };
 
   return (

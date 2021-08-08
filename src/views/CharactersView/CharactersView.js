@@ -23,8 +23,7 @@ export default function CharactersView() {
   const [status, setStatus] = useState(initialStatus);
   const [gender, setGender] = useState(initialGender);
   const [totalPages, setTotalPages] = useState(null);
-  const [error, setError] = useState('');
-
+  const [error, setError] = useState(null);
 
   const formValues = {
     species,
@@ -73,6 +72,7 @@ export default function CharactersView() {
           onChangeSpecies={onChangeSpecies}
           onChangeStatus={onChangeStatus}
           onChangeGender={onChangeGender}
+          setPage={setPage}
         />
         <CharacterContent
           page={page}

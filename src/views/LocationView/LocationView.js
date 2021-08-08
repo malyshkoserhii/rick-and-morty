@@ -21,7 +21,7 @@ export default function LocationView() {
   const [type, setType] = useState(initialType);
   const [dimension, setDimension] = useState(initialDimension);
   const [totalPages, setTotalPages] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const formValues = {
     planetName,
@@ -69,6 +69,7 @@ export default function LocationView() {
           onChangeName={onChangeName}
           onChangeType={onChangeType}
           onChangeDimension={onChangeDimension}
+          setPage={setPage}
         />
         <LocationContent
           page={page}

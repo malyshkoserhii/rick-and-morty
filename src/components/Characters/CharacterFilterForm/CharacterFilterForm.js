@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -11,18 +11,22 @@ export default function CharacterFilterForm({
   onChangeSpecies,
   onChangeStatus,
   onChangeGender,
+  setPage,
 }) {
   const formValues = useContext(FormContext);
   const errorValues = useContext(ErrorContext);
   const { error } = errorValues;
 
   const species = ['all', 'human', 'alien', 'unknown'];
-  const status = ['all', 'status', 'alive', 'dead', 'unknown'];
+  const status = ['all', 'alive', 'dead', 'unknown'];
   const gender = ['all', 'male', 'female', 'genderless', 'unknown'];
+
+  useEffect(() => {
+    toast.error(error);
+  }, [error]);
 
   const onFormSubmit = event => {
     event.preventDefault();
-    toast.error(error);
   };
 
   const onChangeSelect = event => {
@@ -31,12 +35,15 @@ export default function CharacterFilterForm({
     switch (name) {
       case 'species':
         onChangeSpecies(value);
+        setPage(1);
         break;
       case 'status':
         onChangeStatus(value);
+        setPage(1);
         break;
       case 'gender':
         onChangeGender(value);
+        setPage(1);
         break;
       default:
         return;

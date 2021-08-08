@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '../../Button';
@@ -16,14 +16,9 @@ export default function LocationFilterForm({
   const formValues = useContext(FormContext);
   let { planetName, type, dimension, setPage } = formValues;
   const errorValues = useContext(ErrorContext);
-  const { error } = errorValues;
-  const isFirst = useRef(true);
+  const { error, setError } = errorValues;
 
   useEffect(() => {
-    if (isFirst) {
-      isFirst.current = false;
-      return;
-    }
     toast.error(error);
   }, [error]);
 
@@ -32,12 +27,15 @@ export default function LocationFilterForm({
 
     if (planetName !== '') {
       onChangeName(planetName);
+      setPage(1);
     }
     if (type !== '') {
       onChangeType(type);
+      setPage(1);
     }
     if (dimension !== '') {
       onChangeDimension(dimension);
+      setPage(1);
     }
   };
 
@@ -46,6 +44,7 @@ export default function LocationFilterForm({
     onChangeType('');
     onChangeDimension('');
     setPage(1);
+    setError(null);
 
     toast.success('All Locations returned');
   };
@@ -72,7 +71,7 @@ export default function LocationFilterForm({
     <>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
